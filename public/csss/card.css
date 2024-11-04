@@ -1,0 +1,39 @@
+main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 60%;
+    margin: auto;
+}
+
+main .karta {
+    background-color: White;
+    border: 2px gray solid;
+    border-radius: 20px;
+    aspect-ratio: 1;
+    margin: 5%;
+    padding: 40px;
+    position: relative;
+}
+
+.karta img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: blur(5px) grayscale(1);
+    transition: filter .5s linear;
+}
+
+.karta:hover img {
+    filter: none;
+}
+
+.karta:hover i {
+    filter: opacity(1);
+}
+
+.karta i {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    filter: opacity(0);
+    transition: filter .5s linear;
+}
