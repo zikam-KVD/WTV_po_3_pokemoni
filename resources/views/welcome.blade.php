@@ -59,6 +59,19 @@
                     <i class="fa-solid fa-eye"></i>
                 </a>
             </div>
+
+            @foreach ($pokemonos as $poke)
+            <div class="karta">
+                <img
+                    src="img/{{ $poke->id }}.png"
+                    alt="{{ $poke->nazev }}"
+                >
+                <a href="">
+                    <i class="fa-solid fa-eye"></i>
+                </a>
+            </div>
+            @endforeach
+
        </main>
     </body>
 </html>
