@@ -7,8 +7,17 @@ Route::get('/', function () {
     $pokemoni = Pokemon::all();
 
     return view('welcome', ["pokemonos" => $pokemoni]);
-});
-// TODO: pojmenované routy
-Route::get('/detail', function () {
-    return view('detail');
-});
+})->name('index');
+
+Route::get('/pokemon/detail/{id}', function (int $id) {
+
+    $pokemon = Pokemon::find($id);
+
+    if($pokemon === null)
+    {
+        return abort(404);
+    }
+
+    return view('detail', ["poke" => $pokemon]);
+
+})->name('detail');
