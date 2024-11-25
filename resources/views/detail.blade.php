@@ -27,6 +27,13 @@
                     src="{{ asset('img/' . $poke->id . '.png') }}"
                     alt="{{ $poke->nazev }}"
                 >
+                <div class="typy">
+                    <span style="background: {{ $typ->barva }}"> {{ $typ->nazev }}</span>
+                </div>
+                <p>
+                    {{ $poke->popis }}
+                </p>
+
                 <a href="{{ route('index') }}">
                     <i class="fa-solid fa-eye"></i>
                 </a>
