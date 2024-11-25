@@ -6,6 +6,7 @@
 
         <title>Laravel</title>
         <link rel="stylesheet" href={{ asset("csss/card.css") }}>
+
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
         <!-- Fonts -->
@@ -20,28 +21,20 @@
 
     </head>
     <body class="font-sans antialiased dark:bg-black dark:text-white/50">
-       <main id="detail">
+       <main>
+
+            @foreach ($pokemonos as $poke)
             <div class="karta">
-                <h2>{{ $poke->nazev }}</h2>
                 <img
                     src="{{ asset('img/' . $poke->id . '.png') }}"
                     alt="{{ $poke->nazev }}"
                 >
-                <div class="typy">
-                    <a href="{{ route('podleTypu', ['typ' => $poke->druh]) }}">
-                    <span style="background: {{ $poke->typ->barva }}">
-                        {{ $poke->typ->nazev }}
-                    </span>
-                    </a>
-                </div>
-                <p>
-                    {{ $poke->popis }}
-                </p>
-
-                <a href="{{ route('index') }}">
+                <a href="{{ route('detail', ["id" => $poke->id]) }}">
                     <i class="fa-solid fa-eye"></i>
                 </a>
             </div>
+            @endforeach
+
        </main>
     </body>
 </html>
