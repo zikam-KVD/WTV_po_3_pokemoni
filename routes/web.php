@@ -20,3 +20,15 @@ return view('detail', ["poke" => $pokemon]);
 })->name('detail');
 
 Route::get('/pokemoni-podle-typu/{typ}', [PageController::class, 'pokemoniPodleTypu'])->name('podleTypu');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    
+});

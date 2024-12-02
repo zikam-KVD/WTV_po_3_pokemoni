@@ -1,4 +1,4 @@
-$barva-pozadi: blue;
+$barva-pozadi: Gray;
 //TODO:
 //Pouzit controller
 //vypis, co je pokemon za typ
@@ -35,5 +35,17 @@ body {
         }
 
 
+    }
+
+    .inner {
+        max-width: 1000px;
+        margin: auto;
+        display: flex;
+        justify-content: end;
+        background: rgba(107, 93, 93, 0.726);
+        padding: 10px 0;
+        gap: 15px;
+        color: white;
+        font-weight: bold;
     }
 }
