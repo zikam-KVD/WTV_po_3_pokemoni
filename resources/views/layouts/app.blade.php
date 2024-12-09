@@ -40,7 +40,7 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="flex">
                 {{ $slot }}
             </main>
         </div>

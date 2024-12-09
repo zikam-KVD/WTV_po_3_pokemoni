@@ -15,6 +15,12 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <x-nav-link href="{{ route('jaTakyNe') }}" :active="request()->routeIs('jaTakyNe')">
+                        Typy
+                    </x-nav-link>
+                    <a href="{{ route('jaTakyNe') }}">
+                        Typy - nepoužitelne
+                    </a>
                 </div>
             </div>
 

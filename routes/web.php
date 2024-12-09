@@ -30,5 +30,15 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    
+
+    Route::get(
+        '/typy',
+        [PageController::class, 'jaNemamNejmensiPoneti'],
+    )->name('jaTakyNe');
+
+    Route::post(
+        '/typy',
+        [PageController::class, 'nevim'],
+    )->name('vlozTyp');
+
 });
