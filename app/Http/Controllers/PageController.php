@@ -60,4 +60,47 @@ class PageController extends Controller
             return back()->with("message", "Chyba: " . $e->getMessage());
         }
     }
+    //vykresli view pokemoniFormular a posle tam do $typy vsechny pokemonni typy
+    public function pokemoniFormularVykresleni()
+    {
+        return view('pokemoniFormular', ["typy" => Typ::all()]);
+    }
+
+    public function createPokemon(Request $req)
+    {
+        //zvaliduji data a ulozim to do $val
+        $val = $req->validate([
+            "pokemon-nazev" => 'required|min:4|max:18|unique:pokemons,nazev',
+            "pokemon-typ" => 'required|exists:types,id',
+            "pokemon-obrazek" => 'required|extensions:png',
+        ]);
+
+        //vlozim novy typ s ok udaji
+        $poke = Pokemon::create([
+            "nazev" => $val["pokemon-nazev"],
+            "druh" => $req["pokemon-typ"],
+        ]);
+        $poke->save();
+
+        $obrazek = $req->file('pokemon-obrazek');
+        $obrazekNazev = $poke->id ."." . $obrazek->getClientOriginalExtension();
+        $obrazek->move(public_path('img'), $obrazekNazev);
+
+        return back()->with("message", "Vložil jsi nového pokemona $poke->nazev.");
+    }
+
+    public function deleteTyp(int $id)
+    {
+        $typ = Typ::find($id);
+
+        if(null !== $typ) {
+
+            foreach($typ->pokemons as $poke){
+                $poke->delete();
+            }
+
+            $typ->delete();
+            return back()->with("message", "Hurá, smazáno.");
+        }
+    }
 }

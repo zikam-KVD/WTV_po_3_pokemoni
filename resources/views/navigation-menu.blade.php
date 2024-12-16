@@ -18,9 +18,11 @@
                     <x-nav-link href="{{ route('jaTakyNe') }}" :active="request()->routeIs('jaTakyNe')">
                         Typy
                     </x-nav-link>
-                    <a href="{{ route('jaTakyNe') }}">
-                        Typy - nepoužitelne
-                    </a>
+                    <x-nav-link
+                        href="{{ route('admin.pokemoni') }}"
+                        :active="request()->routeIs('admin.pokemoni')">
+                        Pokemoni
+                    </x-nav-link>
                 </div>
             </div>
 

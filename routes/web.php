@@ -40,5 +40,21 @@ Route::middleware([
         '/typy',
         [PageController::class, 'nevim'],
     )->name('vlozTyp');
+    //tohgle vykresluje view s formularem pridavajici pokemona
+    Route::get(
+        '/pokemoni',
+        [PageController::class, 'pokemoniFormularVykresleni']
+    )->name('admin.pokemoni');
+    //vytvoření noveho pokemona pomoci GET metody u formulare
+    Route::post(
+        '/pokemon/create',
+        [PageController::class, 'createPokemon']
+    )->name('vlozPokemona');
+
+    //routa mazajici typ pokemona podle promenne {id}
+    Route::post(
+        '/typ/{id}/delete/',
+        [PageController::class, 'deleteTyp']
+    )->name('smazTyp');
 
 });

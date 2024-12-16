@@ -34,7 +34,12 @@
                     {{ $typ->barva}}
                 </td>
                 <td>{{ count($typ->pokemons) }}</td>
-                <td></td>
+                <td>
+                    <form action="{{ route('smazTyp', ['id' => $typ->id])}}" method="post">
+                        @csrf
+                        <x-button>SMAŽ</x-button>
+                    </form>
+                </td>
             </tr>
         @endforeach
         </table>
